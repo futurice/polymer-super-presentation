@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Polymer</title>
+		<title>SUPER presentation</title>
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -32,6 +32,7 @@
 			}
 		</script>
 
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -54,10 +55,23 @@
 			text-transform: none;
 			text-shadow: none;
 			color: #555;
+			margin-top: .7em;
+		}
+
+		.reveal h1 {
+			margin-top: 0;
 		}
 
 		.reveal code {
 			font-family: "Source Code Pro";
+		}
+
+		.reveal blockquote {
+			border: none;
+			box-shadow: none;
+			margin-top: 2em;
+			margin-bottom: 1em;
+			font-size: 1.2em;
 		}
 
 		.reveal section img {
@@ -65,7 +79,29 @@
 			background: none;
 			box-shadow: none;
 		}
+
+		#logo {
+			width: 20%;
+			opacity: .7;
+			margin-bottom: -0.5em;
+		}
+
+		paper-checkbox {
+			display: block;
+		}
+		paper-checkbox::shadow #checkboxLabel {
+			font-size: 0.6em;
+		}
+
+		.heart {
+			color: #fe57a1;
+		}
+
+		.reveal .super-margin {
+			margin-top: 4em;
+		}
 		</style>
+
 	</head>
 
 	<body>
@@ -75,177 +111,122 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>
-						<img src="http://www.polymer-project.org/images/logos/lockup.svg" width="95%" />
-					</h1>
-					<p>Building blocks for the web</p>
+					<img id="logo" src="crown.svg" alt="" />
+					<h1>SUPER</h1>
+					<p>Salesforce project voting with Polymer</p>
 
           <p>
-            <small>May 30 2014<br> Ossi Hanhinen, <a href="https://twitter.com/ohanhi">@ohanhi</a></small>
+            <small>Sept 5 2014
+            <br><br>Oskar Ehnström, <a href="https://twitter.com/oskarehn" target="_blank">@oskarehn</a>
+            <br>Ossi Hanhinen, <a href="https://twitter.com/ohanhi" target="_blank">@ohanhi</a>
+            </small>
           </p>
 				</section>
 
 				<section>
 					<section>
-						<h2>Polymer</h2>
-						<p>
-							Polymer is a library for building web apps from components using cutting-edge technologies.
-						</p>
+						<h2>Defining the problem</h2>
+						<blockquote>
+							"People don't follow the opportunities on Salesforce. We'd like feedback on which to focus on."
+						</blockquote>
+						<cite>&mdash; Generic Sales Guy</cite>
 					</section>
 					<section>
+						<h2>Requirements</h2>
+						<ul>
+							<li>Salesforce data integration</li>
+							<li>Ability to evaluate and vote</li>
+							<li>SSO integration</li>
+							<li>Responsive design</li>
+							<li>Test-drive Polymer</li>
+						</ul>
+					</section>
+					<section>
+						<h2>SUPER</h2>
+						<p>Salesforce Upcoming Project Evaluation Rankings</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>The Stack</h2>
+						<h3>Frontend</h3>
 						<p>
-							Opinionated, backed by Google.
+							Decidedly Polymer
+						</p>
+						<h3>Backend</h3>
+						<p>
+							Minimum effort &rarr; Express.js + CouchDB
+						</p>
+						<p>
+							Simple JSON interface to data
 						</p>
 					</section>
 				</section>
 
 				<section>
 					<section>
-						<h2>What is it</h2>
-						<p>
-							In Polymer, everything is an element. Building apps is about building custom elements &ndash; and reusing existing ones.
-						</p>
+						<h2>Polymer in action</h2>
 					</section>
 					<section>
-						<h2>Custom element</h2>
+						<h2>
+							<code>core-elements</code>
+						</h2>
 						<p>
-							Self-contained component ready to use:
-							<ul>
-								<li>button</li>
-								<li>login form</li>
-								<li>modal popup</li>
-								<li>etc...</li>
-							</ul>
+							Set of <a href="http://www.polymer-project.org/docs/elements/core-elements.html" target="_blank">reusable components</a> for common tasks,<br>both UI and non-UI.
 						</p>
 					</section>
 					<section>
 						<p>
-							Custom elements have their <strong>own styles</strong> and their <strong>own functionalities</strong>.
+							Google's Material design via <a href="http://www.polymer-project.org/docs/elements/paper-elements.html" target="_blank">Paper Elements</a>
+						</p>
+
+						<!--
+							The paper-checkbox HTML import breaks reveal.js's transitions,
+							hence this dumb iframe. Sorry.
+						-->
+						<iframe src="paper-demo.html" frameborder="0" seamless></iframe>
+					</section>
+					<section>
+						<p>
+							Dividing the project into modules, ie. Custom Elements
 						</p>
 						<p>
-							They can be controlled through <strong>attributes</strong> and <strong>events</strong>.
-						</p>
-						<p>
-							<small>Don't worry, you can still style any element on your page.</small>
+							<a href="architecture-high-level.pdf" target="_blank">Architecture (PDF)</a>
 						</p>
 					</section>
 				</section>
 
 				<section>
-					<section>
-						<h2>Polymer elements</h2>
-						<p>
-							Polymer has a set of <a href="http://www.polymer-project.org/components/core-docs/index.html">Core elements</a> available, ranging from <code>core-xhr</code> to <code>core-tooltip</code>.
-						</p>
-						<p>
-							The idea is that you can use elements to create new elements, e.g. fetch data with <code>core-ajax</code> in your <code>x-weather</code> element.
-						</p>
-					</section>
-					<section>
-						<p>
-							There are also experimental <a href="http://www.polymer-project.org/docs/elements/polymer-ui-elements.html">UI</a> and <a href="http://www.polymer-project.org/docs/elements/polymer-elements.html">non-UI</a> elements in the Polymer labs.
-						</p>
-					</section>
-				</section>
-
-
-				<section>
-					<section>
-						<h2>Using elements</h2>
-						<ol>
-							<li><code data-trim>bower install --save Polymer/polymer</code></li>
-							<li><code data-trim>bower install --save Polymer/core-elements</code></li>
-							<li>Use the elements</li>
-						</ol>
-						<p>&nbsp;</p>
-						<p>
-							<a href="http://www.polymer-project.org/docs/start/usingelements.html">Getting started / Using elements</a>
-						</p>
-					</section>
+					<h2>Suboptimal features</h2>
+					<p>
+						Browser compatibility
+					</p>
+					<p>
+						Loading times &rarr; <code>vulcanize</code>
+					</p>
+					<p>
+						UI performance
+					</p>
+					<p>
+						Object observation
+					</p>
 				</section>
 
 				<section>
-					<section>
-						<h2>Creating elements</h2>
-						<ol>
-							<li><code data-trim>bower install --save Polymer/polymer</code></li>
-							<li>Build an element in HTML</li>
-						</ol>
-						<p>&nbsp;</p>
-						<p>
-							<a href="http://www.polymer-project.org/docs/start/creatingelements.html">Getting started / Creating elements</a>
-						</p>
-					</section>
+					<h2>We <span class="heart">&hearts;</span> feedback!</h2>
 
-					<section>
-						<h4>elements/my-element.html</h4>
-						<pre><code data-trim contenteditable>
-&lt;link rel="import" href="../bower_components/polymer/polymer.html"&gt;
-
-&lt;polymer-element name="my-element" noscript&gt;
-  &lt;template&gt;
-    &lt;span&gt;Hello from &lt;b&gt;my-element&lt;/b&gt;. This is my Shadow DOM.&lt;/span&gt;
-  &lt;/template&gt;
-&lt;/polymer-element&gt;
-						</code></pre>
-					</section>
-					<section>
-						<h4>index.html</h4>
-						<pre><code data-trim>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;!-- 1. Load platform support before any code that touches the DOM. --&gt;
-    &lt;script src="bower_components/platform/platform.js"&gt;&lt;/script&gt;
-    &lt;!-- 2. Load the component using an HTML Import --&gt;
-    &lt;link rel="import" href="elements/my-element.html"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;!-- 3. Declare the element by its tag. --&gt;
-    &lt;my-element&gt;&lt;/my-element&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-						</code></pre>
-					</section>
-
-					<section>
-						<h2>(live demo)</h2>
-						<pre><code data-trim contenteditable>
-&lt;demo-list
-  nodes="[ {'title': 'A'}, {'title': 'B'}, {'title': 'C'} ]"&gt;
-&lt;demo-list/&gt;
-						</code></pre>
-					</section>
+					<p class="super-margin">
+						<small>
+							PS. <a href="http://futurice.github.io/futu-process-arrow/" target="_blank"><code>futu-process-arrow</code></a> has been published as a Bower component.
+						</small>
+					</p>
 				</section>
 
 				<section>
-					<section>
-						<h2>A bit on Shadow DOM</h2>
-						<p>
-							Each element has its own Shadow DOM.
-						</p>
-						<p>
-							Shadow DOM <strong>encapsulates components</strong> but <strong>does not prevent manipulation</strong>.
-						</p>
-					</section>
-					<section>
-						<p>
-							Styles don't pass the Shadow boundary by default, but you can target Shadow DOMs using the <code>::shadow</code> pseudo-element or the <code>/deep/</code> combinator.
-						</p>
-					</section>
+					<h2>Time for the <code>&lt;code&gt;</code></h2>
 				</section>
 
-				<section>
-					<h2>More info</h2>
-					<ul>
-						<li>
-							<a href="http://www.polymer-project.org/">polymer-project.org</a>
-						</li>
-						<li>
-							<a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/">HTML5 Rocks: Shadow DOM 101</a>
-						</li>
-					</ul>
-				</section>
 
 			</div>
 
